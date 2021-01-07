@@ -1,0 +1,19 @@
+{
+  "name": "yukmammam",
+  "version": "1.0.0",
+  "description": "food catalogue",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mlutfifahreza/yukmammam.git"
+  },
+  "author": "mlutfifahreza",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mlutfifahreza/yukmammam/issues"
+  },
+  "homepage": "https://github.com/mlutfifahreza/yukmammam#readme"
+}
