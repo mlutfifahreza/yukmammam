@@ -1,0 +1,25 @@
+<% layout('layouts/boilerplate')%>
+<div class="container">
+  <h1 class="m-2">All Foods</h1>
+
+  <div class="row">
+    <% for( let i = 0; i < foods.length; i++ ) { %>
+      <div class="col-3">
+        <div class="card m-2">
+          <img src="<%= foods[i].image %>" class="card-img-top p-2 " alt="<%= foods[i].title %> Image"/> 
+          <div class="card-body">
+            <h5 class="card-title"><%= foods[i].title %></h5>
+            <p class="card-subtitle mb-2 text-muted"><%= foods[i].price %></p>
+            <p class="card-text"><%= foods[i].description %></p>
+            <a href="#" class="btn btn-primary w-100">Details</a>
+            <div class="d-flex justify-content-center mt-2">
+              <a href="#" class="card-link text-success">Update</a>
+              <a href="#" class="card-link text-danger">Delete</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% } %>
+  </div>
+
+</div>
