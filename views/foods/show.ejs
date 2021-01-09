@@ -1,5 +1,16 @@
 <% layout('layouts/boilerplate')%>
-<div class="container">
-    <h1>Show Page</h1>
-    
+<div class="container d-flex justify-content-center">
+    <div class="jumbotron w-50 py-4">
+        <h1 class="display-5"><%= food.title %></h1>
+        <img class="img-fluid mb-3" src="<%= food.image %> " alt="" srcset="" >
+        <h3><span class="badge bg-success text-white">$ <%= food.price %></span></h3>
+        <p class="lead"><%= food.description %> </p>
+        <hr class="my-4">
+        <div class="d-flex justify-content-center mt-2">
+            <a href="/foods/<%= food._id %>/edit" class="btn btn-success mx-4 w-25">Edit</a>
+            <form class="mx-4 w-25" action="/foods/<%= food._id %>?_method=DELETE" method="POST">
+                <button class="btn btn-danger w-100" >Delete</button>
+            </form>
+          </div>
+      </div>
 </div>

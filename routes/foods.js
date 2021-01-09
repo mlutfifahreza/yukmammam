@@ -13,19 +13,16 @@ router.route('/')
     .get(catchAsync(foods.index))
     .post(catchAsync(foods.addFood))
 
-router.route('/show')
-    .get(catchAsync(foods.show))
-
 router.route('/edit')
     .get(catchAsync(foods.edit))
 
 router.get('/add', foods.renderAddFoodForm)
 
-// router.route('/:id')
-//     .get(catchAsync(campgrounds.showCampground))
-//     .put(isLoggedIn, isAuthor, upload.array('image'), validateCampground, catchAsync(campgrounds.updateCampground))
-//     .delete(isLoggedIn, isAuthor, catchAsync(campgrounds.deleteCampground));
+router.route('/:id')
+    .get(catchAsync(foods.showFood))
+    .put(catchAsync(foods.updateFood))
+    .delete(catchAsync(foods.deleteFood));
 
-// router.get('/:id/edit', isLoggedIn, isAuthor, catchAsync(campgrounds.renderEditForm))
+router.get('/:id/edit', catchAsync(foods.renderEditFood))
 
 module.exports = router;

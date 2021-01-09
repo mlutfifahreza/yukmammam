@@ -17,50 +17,33 @@ module.exports.addFood = async (req, res, next) => {
     res.redirect('/foods');
 }
 
-// module.exports.showCampground = async (req, res,) => {
-//     const campground = await Campground.findById(req.params.id).populate({
-//         path: 'reviews',
-//         populate: {
-//             path: 'author'
-//         }
-//     }).populate('author');
-//     if (!campground) {
-//         req.flash('error', 'Cannot find that campground!');
-//         return res.redirect('/campgrounds');
-//     }
-//     res.render('campgrounds/show', { campground });
-// }
+module.exports.showFood = async (req, res,) => {
+    const food = await Food.findById(req.params.id);
+    if (!food) {
+        return res.redirect('/foods');
+    }
+    res.render('foods/show', { food });
+}
 
-// module.exports.renderEditForm = async (req, res) => {
-//     const { id } = req.params;
-//     const campground = await Campground.findById(id)
-//     if (!campground) {
-//         req.flash('error', 'Cannot find that campground!');
-//         return res.redirect('/campgrounds');
-//     }
-//     res.render('campgrounds/edit', { campground });
-// }
+module.exports.renderEditFood = async (req, res) => {
+    const { id } = req.params;
+    const food = await Food.findById(id)
+    if (!food) {
+        return res.redirect('/foods');
+    }
+    res.render('foods/edit', { food });
+}
 
-// module.exports.updateCampground = async (req, res) => {
-//     const { id } = req.params;
-//     console.log(req.body);
-//     const campground = await Campground.findByIdAndUpdate(id, { ...req.body.campground });
-//     const imgs = req.files.map(f => ({ url: f.path, filename: f.filename }));
-//     campground.images.push(...imgs);
-//     await campground.save();
-//     if (req.body.deleteImages) {
-//         for (let filename of req.body.deleteImages) {
-//             await cloudinary.uploader.destroy(filename);
-//         }
-//         await campground.updateOne({ $pull: { images: { filename: { $in: req.body.deleteImages } } } })
-//     }
-//     req.flash('success', 'Successfully updated campground!');
-//     res.redirect(`/campgrounds/${campground._id}`)
-// }
+module.exports.updateFood = async (req, res) => {
+    const { id } = req.params;
+    console.log(req.body);
+    const food = await Food.findByIdAndUpdate(id, { ...req.body.food });
+    await food.save();
+    res.redirect(`/foods/${id}`)
+}
 
-// module.exports.deleteCampground = async (req, res) => {
-//     const { id } = req.params;
-//     await Campground.findByIdAndDelete(id);
-//     req.flash('success', 'Successfully deleted campground')
-//     res.redirect('/campgrounds');
-// }
+module.exports.deleteFood = async (req, res) => {
+    const { id } = req.params;
+    await Food.findByIdAndDelete(id);
+    res.redirect('/foods');
+}
